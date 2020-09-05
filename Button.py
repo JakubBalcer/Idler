@@ -13,13 +13,12 @@ class Button:
         self.visible = True
         self.destroyed = False
         self.action = None
-        self.text = None
+        self.text = "None"
 
     def show(self, surface):
         if self.visible:
             self.establish(surface)
-            if self.text:
-                self.renderText(surface)
+            self.renderText(surface)
 
 
     def establish(self, surface):
