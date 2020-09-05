@@ -1,8 +1,4 @@
 import pygame
-from shapely.geometry import Point
-from shapely.geometry.polygon import Polygon
-import matplotlib.path as mplPath
-import numpy as np
 
 class Button:
     def __init__(self, screen, x, y, size, shape):
@@ -19,10 +15,11 @@ class Button:
 
     def establish(self):
         if self.shape == 'rect':
-            pygame.draw.rect(self.screen, pygame.Color(255,255,255), pygame.Rect(self.pos,self.size))
+            self.area = pygame.Rect(self.pos,self.size)
+            pygame.draw.rect(self.screen, pygame.Color(255,255,255), self.area )
 
     def clicked(self, pos):
         if self.shape != 'ellipse':
-            bbpath = mplPath.Path([[self.x, self.y], [self.x+self.width, self.y], [self.x, self.y + self.height], [self.x + self.width, self.y+self.height]])
-            if bbpath.contains_point(pos):
-                print("CONTAINS")
+            if self.area.collidepoint(pos):
+                print("INSIDE")
+            
