@@ -3,6 +3,7 @@ import pygame
 # TO DO 
 # BOUND TEXT INSIDE BUTTON
 # CENTERING TEXT INSIDE BUTTON
+# SET IMAGE INSIDE BUTTON
 
 class Button:
     def __init__(self, x, y, size, shape):

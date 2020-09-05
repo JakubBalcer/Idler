@@ -17,3 +17,6 @@ class Text:
         
     def setPos(self, pos):
         self.pos = pos
+
+    def setText(self, text):
+        self.text = text
