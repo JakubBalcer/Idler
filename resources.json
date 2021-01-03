@@ -1,0 +1,6 @@
+{
+    "resources":[
+        {"name": "Wood","amount":0, "value":1, "price":1,"description":"Wood you collect by cutting down trees", "tab":"Forest" },
+        {"name": "Money","amount":0, "value":1, "price":1,"description":"Money you get by selling stuff", "tab":"Forest" }
+    ]
+}

@@ -18,6 +18,7 @@ class Button:
         self.text = None
         self.image = None
         self.bgcolor = 0, 0, 0
+        self.active = True
 
     def draw(self, surface):
         if self.visible:
@@ -32,7 +33,7 @@ class Button:
             pygame.draw.rect(surface, pygame.Color(*self.bgcolor), self.area)
 
     def clicked(self, pos):
-        if self.area.collidepoint(pos):
+        if self.area.collidepoint(pos) and self.active:
             self.dispatchAction()
 
     def setAction(self, action):
@@ -72,3 +73,6 @@ class Button:
 
     def setBgcolor(self, color):
         self.bgcolor = color
+
+    def set_active(self, active):
+        self.active = active
