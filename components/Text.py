@@ -2,7 +2,7 @@ import pygame
 
 
 class Text:
-    def __init__(self, text, font='Centaur', size=16, color=(255, 255, 255)):
+    def __init__(self, text, font='Arial', size=16, color=(255, 255, 255)):
         self.color = color
         self.text = text
         self.size = size

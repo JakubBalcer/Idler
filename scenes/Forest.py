@@ -7,8 +7,8 @@ from components.Sprite import Sprite
 
 
 class Forest(Scene):
-    def __init__(self, resources):
-        super().__init__()
+    def __init__(self, resources, stage):
+        super().__init__(stage)
         self.resources = resources
         self.create_scene()
 

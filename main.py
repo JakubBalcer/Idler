@@ -2,9 +2,12 @@ import pygame
 import sys
 from components.Constants import *
 from components.Button import Button
+from components.Text import Text
 from game_structures.Save import Save
 from game_structures.Resource import Resource
 from game_structures.Stage import Stage
+from game_structures.Player import Player
+from game_structures.Game_time import Game_time
 
 # PYGAME INIT
 
@@ -30,8 +33,15 @@ screen = pygame.display.set_mode(size)
 paused = False
 stage = Stage(resources)
 stage.set_scene("Forest")
+player = Player(resources)
+game_time = Game_time(60)
+stage.add_component(game_time.display)
 
 # GAME LOOP
+
+fps_counter = 0
+fps_txt = Text("0")
+fps_txt.setPos((width-60, 0))
 
 while not paused:
     for event in pygame.event.get():
@@ -46,6 +56,12 @@ while not paused:
                 for resource in resources:
                     save2.add_object(resource.name, resource.get_save_data())
                 save2.serialize()
+            fps_txt.setText("FPS: "+str(fps_counter))
+            fps_counter = 0
+            game_time.each_second()
+
     screen.fill(pygame.Color(124, 122, 122))
     stage.draw_scene(screen)
+    fps_txt.draw(screen)
+    fps_counter += 1
     pygame.display.flip()

@@ -1,10 +1,12 @@
 from scenes.Forest import Forest
+from scenes.General import General
 
 
 class Stage:
     def __init__(self, resources):
         self.resources = resources
-        self.scenes = {"Forest": Forest(self.rs_by_tab("Forest"))}
+        self.scenes = {"Forest": Forest(
+            self.rs_by_tab("Forest"), self), "General": General(None, self)}
         self.current_scene = None
 
     def set_scene(self, tab_name):
@@ -19,3 +21,6 @@ class Stage:
 
     def get_components(self):
         return self.current_scene.components
+
+    def add_component(self, component):
+        self.current_scene.components.append(component)
